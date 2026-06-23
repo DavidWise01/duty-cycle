@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE DUTY CYCLE · Edge · Work · Edge</title>
+<style>
+:root{
+  --paper:#efeae0; --ink:#2a2438; --ink-mid:#4a4360; --ink-faint:#8a83a0;
+  --plum:#5b3a87; --plum-light:#7e5bb0; --plum-soft:#e6ddf0;
+  --gold:#9a7d3a; --rose:#9a4a6a; --green:#3a7a5a; --edge:#9a4a6a;
+  --p90:#3a6a87; --p180:#5b3a87; --p270:#9a7d3a; --p360:#3a7a5a;
+  --line:#cbbfdd;
+  --mono:"Courier New",Courier,monospace;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);
+  background-image:repeating-linear-gradient(0deg, rgba(91,58,135,.025) 0 1px, transparent 1px 3px);
+  color:var(--ink);font-family:var(--serif);line-height:1.5;padding:10px}
+.sheet{max-width:820px;margin:0 auto;border:2.5px solid var(--plum);padding:0;position:relative}
+.sheet::before{content:'';position:absolute;inset:5px;border:1px solid var(--plum-light);pointer-events:none}
+.inner{padding:22px}
+.masthead{text-align:center;border-bottom:2px solid var(--plum);padding-bottom:12px}
+.mast-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--plum-light);text-transform:uppercase}
+.mast-title{font-size:clamp(21px,5vw,36px);letter-spacing:.03em;font-weight:700;margin:6px 0 2px;text-transform:uppercase;color:var(--plum)}
+.mast-sub{font-family:var(--mono);font-size:10px;letter-spacing:.07em;color:var(--ink-mid)}
+.lede{font-size:12.5px;max-width:660px;margin:12px auto 0;text-align:center;color:var(--ink-mid);line-height:1.6}
+.lede b{color:var(--plum)}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:640px){.stage{grid-template-columns:1fr}}
+.box{border:1.5px solid var(--plum-light);padding:12px;background:rgba(126,91,176,.04)}
+.box h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);text-align:center;margin-bottom:8px}
+svg{width:100%;height:auto;display:block}
+.readout{text-align:center;font-family:var(--mono);font-size:11px;margin-top:8px;color:var(--ink-mid);min-height:32px;line-height:1.5}
+.readout b{color:var(--plum)}
+.controls{display:flex;gap:8px;justify-content:center;margin:12px 0;flex-wrap:wrap}
+.cbtn{appearance:none;background:transparent;cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 13px;border:1.5px solid var(--plum);color:var(--plum);margin:2px}
+.cbtn.gold{border-color:var(--gold);color:#6a5520}
+/* sides */
+.sides{display:grid;grid-template-columns:1fr 40px 1fr;gap:8px;align-items:center;margin:14px 0}
+@media(max-width:560px){.sides{grid-template-columns:1fr}}
+.side{border:1.5px solid var(--line);padding:10px;font-family:var(--mono);font-size:10px;line-height:1.6}
+.side h4{font-size:10px;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:6px}
+.side.in h4{color:var(--green)} .side.out h4{color:var(--rose)}
+.side .edge{font-weight:700;padding:3px 0;border-bottom:1px dotted var(--line);margin-bottom:4px}
+.side.in .edge{color:var(--green)} .side.out .edge{color:var(--rose)}
+.side .ops{color:var(--ink-mid);font-size:9px}
+.gap{text-align:center;font-family:var(--mono);font-size:20px;color:var(--plum);font-weight:700}
+h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1.5px solid var(--plum);padding-bottom:4px;margin:20px 0 10px;color:var(--plum)}
+.body p{font-size:12.5px;margin-bottom:8px}
+.body b{color:var(--ink)}
+.def{font-family:var(--mono);font-size:10.5px;background:var(--plum-soft);border-left:2px solid var(--plum-light);padding:9px 12px;margin:9px 0;line-height:1.7;color:var(--ink-mid)}
+.def b{color:var(--plum)}
+.colophon{margin-top:20px;border-top:2px solid var(--plum);padding-top:12px;text-align:center;font-family:var(--mono);font-size:9px;color:var(--ink-mid);letter-spacing:.05em;line-height:1.9}
+.colophon b{color:var(--plum)}
+</style>
+</head>
+<body>
+<div class="sheet"><div class="inner">
+
+<header class="masthead">
+  <div class="mast-eyebrow">Series E · Edge · Work · Edge</div>
+  <h1 class="mast-title">The Duty Cycle</h1>
+  <div class="mast-sub">+1 IN (tick) → 4 Phases (work) → +1 OUT (tick) · One Full Period</div>
+  <p class="lede">The <b>0s are rhythm</b> — clock edges, not phases. One full cycle: a <b style="color:var(--green)">+1 IN</b> rising edge opens it, the work spins through <b>4 distinct phases</b> (90·180·270·360), and a <b style="color:var(--rose)">+1 OUT</b> falling edge closes it — returning to 0. Two ticks bracketing four phases. <b>Edge · Work · Edge.</b> One duty cycle.</p>
+</header>
+
+<div class="stage">
+  <div class="box">
+    <h3>The Rotation · 4 phases between 2 edges</h3>
+    <svg id="phasor" viewBox="0 0 240 240" aria-label="rotating phasor"></svg>
+    <div class="readout" id="phaseread"></div>
+  </div>
+  <div class="box">
+    <h3>The Waveform · the duty cycle</h3>
+    <svg id="wave" viewBox="0 0 240 240" aria-label="duty cycle waveform"></svg>
+    <div class="readout" id="waveread"></div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="cbtn gold" id="runBtn" onclick="toggle()">▶ Run One Cycle</button>
+  <button class="cbtn" onclick="stepPhase()">Step Phase ▸</button>
+  <button class="cbtn" onclick="reset()">Reset</button>
+</div>
+
+<h2 class="sec">The Two Sides · 27 ‖ 27 across the gap</h2>
+<div class="sides">
+  <div class="side in">
+    <h4>◢ IN-side (L) · 27</h4>
+    <div class="edge">+1 IN · the rising edge (0°)</div>
+    <div class="ops">26 operations<br>(the work, spun across the 4 phases)</div>
+  </div>
+  <div class="gap">‖<br><span style="font-size:11px">-+</span></div>
+  <div class="side out">
+    <h4>OUT-side (R) ◣ · 27</h4>
+    <div class="edge">+1 OUT · the falling edge (→0°)</div>
+    <div class="ops">26 operations<br>(the work, spun across the 4 phases)</div>
+  </div>
+</div>
+
+<section class="body">
+  <h2 class="sec">Why The 0s Are Rhythm, Not Phases</h2>
+  <p>A line has two different endpoints. A <b>cycle</b> returns to its start — so its two ends are the <em>same point in space</em> (360° = 0°) but <em>different ticks in time</em> (the in-edge that opens, the out-edge that closes). That's what makes it a cycle and not a line. The two 0s aren't a double-count; they're the <b>two edges of one period</b> — and a period needs both.</p>
+  <div class="def">
+    +1 IN  = rising edge (0°) · the boundary tick, cycle opens<br>
+    4 phases = 90° · 180° · 270° · 360° · the work / the rotation<br>
+    +1 OUT = falling edge (→0°) · the boundary tick, cycle closes<br>
+    <b>= EDGE · WORK · EDGE = one full duty cycle</b>
+  </div>
+  <p>Per side: <b>27 = 1 + 26</b> — one boundary card (the edge / the tick) plus 26 operations (the work between ticks). The boundary isn't bolted on; it's the <b>27th member that completes the cube</b> (27 = 3³). Two sides — IN and OUT — mirror across the gap, and the rotation carries you from one edge to the other and home again.</p>
+</section>
+
+<div class="colophon">
+  THE 0s ARE CLOCK EDGES (RHYTHM) · 4 DISTINCT PHASES BETWEEN 2 TICKS · NOT 6<br>
+  +1 IN (RISING) → 90·180·270·360 (WORK) → +1 OUT (FALLING) → HOME (0=360)<br>
+  27 = 1 EDGE + 26 OPS = 3³ · TWO SIDES MIRROR ACROSS THE GAP · EDGE · WORK · EDGE<br>
+  THE DUTY CYCLE · SERIES E · JUNE 2026
+</div>
+
+</div></div>
+<script>
+const NS="http://www.w3.org/2000/svg";
+const E=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const PHASES=[
+  {deg:90, col:'#3a6a87', name:'90\u00b0', role:'phase 1 · work'},
+  {deg:180,col:'#5b3a87', name:'180\u00b0',role:'phase 2 · work'},
+  {deg:270,col:'#9a7d3a', name:'270\u00b0',role:'phase 3 · work'},
+  {deg:360,col:'#3a7a5a', name:'360\u00b0',role:'phase 4 · work \u2192 home'}
+];
+// state: angle 0..360. edges at 0 (in) and 360->0 (out). 4 phase markers.
+let angle=0, anim=null, phaseStep=0;
+
+function drawPhasor(){
+  const s=document.getElementById('phasor');s.innerHTML='';
+  const cx=120,cy=120,R=88;
+  // ring
+  s.appendChild(E('circle',{cx,cy,r:R,fill:'none',stroke:'#cbbfdd','stroke-width':1.5}));
+  // phase markers at 90,180,270,360(=top)
+  PHASES.forEach(p=>{
+    const a=(p.deg-90)*Math.PI/180; // 0deg at top, clockwise
+    const x=cx+R*Math.cos(a), y=cy+R*Math.sin(a);
+    const active = Math.abs(((angle%360)||360) - p.deg) < 1 || (p.deg===360 && (angle%360)===0 && angle>0);
+    s.appendChild(E('circle',{cx:x,cy:y,r:active?9:6,fill:active?p.col:'#efeae0',stroke:p.col,'stroke-width':2}));
+    const lx=cx+(R+18)*Math.cos(a), ly=cy+(R+18)*Math.sin(a);
+    s.appendChild(E('text',{x:lx,y:ly+3,'font-family':'Courier New','font-size':9,fill:p.col,'text-anchor':'middle','font-weight':'bold'})).textContent=p.deg;
+  });
+  // the IN/OUT edge marker at top (0/360)
+  s.appendChild(E('circle',{cx,cy:cy-R,r:7,fill:'#fff',stroke:'#9a4a6a','stroke-width':2.5}));
+  s.appendChild(E('text',{x:cx,y:cy-R-12,'font-family':'Courier New','font-size':8,fill:'#9a4a6a','text-anchor':'middle','font-weight':'bold'})).textContent='0 / 360';
+  s.appendChild(E('text',{x:cx,y:cy-R+22,'font-family':'Courier New','font-size':7,fill:'#9a4a6a','text-anchor':'middle'})).textContent='IN/OUT edge';
+  // rotating hand
+  const a=(angle-90)*Math.PI/180;
+  const hx=cx+R*Math.cos(a), hy=cy+R*Math.sin(a);
+  s.appendChild(E('line',{x1:cx,y1:cy,x2:hx,y2:hy,stroke:'#5b3a87','stroke-width':2.5}));
+  s.appendChild(E('circle',{cx,cy,r:4,fill:'#5b3a87'}));
+  // center angle
+  s.appendChild(E('text',{x:cx,y:cy+4,'font-family':'Courier New','font-size':14,fill:'#5b3a87','text-anchor':'middle','font-weight':'bold','dy':'18'})).textContent=Math.round(angle)+'\u00b0';
+}
+function drawWave(){
+  const s=document.getElementById('wave');s.innerHTML='';
+  // duty cycle: low - rising edge (IN) at x=40 - high through 4 phases - falling edge (OUT) at x=200 - low
+  const baseY=160, highY=70, x0=20, xin=50, xout=200, x1=230;
+  // low before
+  s.appendChild(E('line',{x1:x0,y1:baseY,x2:xin,y2:baseY,stroke:'#8a83a0','stroke-width':2}));
+  // rising edge (IN)
+  s.appendChild(E('line',{x1:xin,y1:baseY,x2:xin,y2:highY,stroke:'#3a7a5a','stroke-width':3}));
+  // high (work)
+  s.appendChild(E('line',{x1:xin,y1:highY,x2:xout,y2:highY,stroke:'#5b3a87','stroke-width':3}));
+  // falling edge (OUT)
+  s.appendChild(E('line',{x1:xout,y1:highY,x2:xout,y2:baseY,stroke:'#9a4a6a','stroke-width':3}));
+  // low after
+  s.appendChild(E('line',{x1:xout,y1:baseY,x2:x1,y2:baseY,stroke:'#8a83a0','stroke-width':2}));
+  // edge labels
+  s.appendChild(E('text',{x:xin,y:baseY+16,'font-family':'Courier New','font-size':8,fill:'#3a7a5a','text-anchor':'middle','font-weight':'bold'})).textContent='+1 IN';
+  s.appendChild(E('text',{x:xin,y:baseY+26,'font-family':'Courier New','font-size':7,fill:'#3a7a5a','text-anchor':'middle'})).textContent='(0\u00b0)';
+  s.appendChild(E('text',{x:xout,y:baseY+16,'font-family':'Courier New','font-size':8,fill:'#9a4a6a','text-anchor':'middle','font-weight':'bold'})).textContent='+1 OUT';
+  s.appendChild(E('text',{x:xout,y:baseY+26,'font-family':'Courier New','font-size':7,fill:'#9a4a6a','text-anchor':'middle'})).textContent='(\u21920\u00b0)';
+  // 4 phase ticks along the high portion
+  PHASES.forEach((p,i)=>{
+    const px=xin+(xout-xin)*((i+1)/4);
+    const reached = angle>=p.deg;
+    s.appendChild(E('line',{x1:px,y1:highY-6,x2:px,y2:highY+6,stroke:p.col,'stroke-width':reached?2.5:1}));
+    s.appendChild(E('text',{x:px,y:highY-10,'font-family':'Courier New','font-size':7,fill:p.col,'text-anchor':'middle','font-weight':reached?'bold':'normal'})).textContent=p.deg;
+  });
+  s.appendChild(E('text',{x:(xin+xout)/2,y:highY-26,'font-family':'Courier New','font-size':8,fill:'#5b3a87','text-anchor':'middle','font-weight':'bold'})).textContent='THE WORK (4 phases)';
+  // moving position dot on the waveform
+  let dotX, dotY;
+  if(angle<=0){ dotX=xin; dotY=baseY; }
+  else if(angle>=360){ dotX=xout; dotY=baseY; }
+  else { dotX=xin+(xout-xin)*(angle/360); dotY=highY; }
+  s.appendChild(E('circle',{cx:dotX,cy:dotY,r:5,fill:'#9a7d3a',stroke:'#fff','stroke-width':1.5}));
+}
+function updateReadouts(){
+  const pr=document.getElementById('phaseread');
+  const wr=document.getElementById('waveread');
+  let label;
+  if(angle<=0) label='<b style="color:#3a7a5a">+1 IN</b> · rising edge · cycle opens';
+  else if(angle>=360) label='<b style="color:#9a4a6a">+1 OUT</b> · falling edge · cycle closes \u2192 home (0)';
+  else { const cur=PHASES.find(p=>angle<=p.deg)||PHASES[3]; label='<b>'+cur.name+'</b> · '+cur.role; }
+  pr.innerHTML=label;
+  wr.innerHTML='2 edges (the 0s = rhythm) bracket 4 phases (the work)<br><b>EDGE · WORK · EDGE</b>';
+}
+function render(){ drawPhasor(); drawWave(); updateReadouts(); }
+function toggle(){
+  if(anim){clearInterval(anim);anim=null;document.getElementById('runBtn').textContent='\u25b6 Run One Cycle';return;}
+  if(angle>=360) angle=0;
+  document.getElementById('runBtn').textContent='\u275a\u275a Pause';
+  anim=setInterval(()=>{
+    angle+=4;
+    if(angle>=360){ angle=360; render(); clearInterval(anim);anim=null;document.getElementById('runBtn').textContent='\u25b6 Run One Cycle'; return; }
+    render();
+  },40);
+}
+function stepPhase(){
+  if(angle>=360) angle=0;
+  // jump to next phase boundary
+  const next=[90,180,270,360].find(p=>p>angle);
+  angle = next!==undefined ? next : 360;
+  render();
+}
+function reset(){ if(anim){clearInterval(anim);anim=null;document.getElementById('runBtn').textContent='\u25b6 Run One Cycle';} angle=0; render(); }
+render();
+</script>
+</div>
+</body>
+</html>
