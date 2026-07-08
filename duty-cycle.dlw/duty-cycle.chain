@@ -4,6 +4,6 @@ slug  : duty-cycle
 seal  : 75aa33baa9dd3b02ea8e6ff6c4816275283384c9adba772adf2c3d229846353b
 prev  : 713c45191be4648eab5545672b48dcfb31cecd32e5cbddf65e42a5789e824ef2
 link  : 40fd0827a4c957502a1a6c03587d75b6baac681e9595e853dcd3211d1faf816f
-head  : 3447d3a0533aaf1e29a8bdc67a9774884fb3ae9dbc8a17064b7a008ca3c4ec90
+head  : 13f9ace173ef2e60af38912ba329b4afcb5a38b84a0e4495e8d30327f8c99cc2
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
